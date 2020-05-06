@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Producto:.
+    </ui:define>
+	<ui:define name="titleCont">
+		<span>Producto</span>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+
+			<p:inputText autocomplete="off" id="idProduct"
+				styleClass="form-control" value="#{productController.p.idProduct}"
+				required="true"/>
+			
+			<h:outputLabel for="String" value="Descripcion:"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="string3" styleClass="form-control"
+				value="#{productController.p.descriptionProduct}"
+				maxlength="30" required="true"/>
+			
+			<h:outputLabel for="String" value="Nombre"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="string1" styleClass="form-control"
+				value="#{productController.p.nameProduct}"
+				maxlength="30" required="true"/>
+			
+			<h:outputLabel for="String" value="Imagen"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="string2" styleClass="form-control"
+				value="#{productController.p.imageProduct}"
+				maxlength="30" required="true"/>
+				
+			<h:outputLabel for="int" value="Precio"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="int" styleClass="form-control"
+				value="#{productController.p.priceProduct}"
+				maxlength="30" required="true"/>
+				
+			<h:outputLabel for="int" value="Cantidad:"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="int2" styleClass="form-control"
+				value="#{productController.p.stockProduct}"
+				maxlength="30" required="true"/>
+		
+			<br/>
+		
+			<p:commandButton value="Grabar"
+				actionListener="#{productController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listProduct?faces-redirect=true"/>
+			<p:commandButton value="Cancelar"
+				action="listProduct?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false"/>
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000"/>
+
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

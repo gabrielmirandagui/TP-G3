@@ -1,30 +1,79 @@
 package pe.edu.upc.entity;
 
-public class CategoryProduct {
+import java.io.Serializable;
 
-	private int idCategoryProduct;
-	private String nameCategoryProduct;
-	private String descriptionCategoryProduct;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	
-	public int getIdCategoryProduct() {
-		return idCategoryProduct;
+@Entity
+@Table(name = "Categoria")
+public class CategoryProduct implements Serializable {
+
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idCategory;
+	@Column(name = "descriptionCategory", nullable = false, length = 45)
+	private String descriptionCategory;
+
+	public CategoryProduct() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	public void setIdCategoryProduct(int idCategoryProduct) {
-		this.idCategoryProduct = idCategoryProduct;
+
+	public CategoryProduct(int idCategory, String descriptionCategory) {
+		super();
+		this.idCategory = idCategory;
+		this.descriptionCategory = descriptionCategory;
 	}
-	public String getNameCategoryProduct() {
-		return nameCategoryProduct;
+
+	public int getIdCategory() {
+		return idCategory;
 	}
-	public void setNameCategoryProduct(String nameCategoryProduct) {
-		this.nameCategoryProduct = nameCategoryProduct;
+
+	public void setIdCategory(int idCategory) {
+		this.idCategory = idCategory;
 	}
-	public String getDescriptionCategoryProduct() {
-		return descriptionCategoryProduct;
+
+	public String getDescriptionCategory() {
+		return descriptionCategory;
 	}
-	public void setDescriptionCategoryProduct(String descriptionCategoryProduct) {
-		this.descriptionCategoryProduct = descriptionCategoryProduct;
+
+	public void setDescriptionCategory(String descriptionCategory) {
+		this.descriptionCategory = descriptionCategory;
 	}
-	
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((descriptionCategory == null) ? 0 : descriptionCategory.hashCode());
+		result = prime * result + idCategory;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CategoryProduct other = (CategoryProduct) obj;
+		if (descriptionCategory == null) {
+			if (other.descriptionCategory != null)
+				return false;
+		} else if (!descriptionCategory.equals(other.descriptionCategory))
+			return false;
+		if (idCategory != other.idCategory)
+			return false;
+		return true;
+	}
+
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+	<ui:define name="title">
+        .:Listado de Voucher:.
+    </ui:define>
+	<ui:define name="titleCont">
+		<span>Voucher</span>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+
+			<div class="col-sm-12">
+				<div class="form-group table-responsive box-table-class">
+					<p:dataTable id="listVoucher" var="vou"
+						value="#{voucherController.listaVoucher}"
+						paginator="true" paginatorPosition="top"
+						rowsPerPageTemplate="10,20,30,40,50" rows="10"
+						styleClass="table table-bordered"
+						emptyMessage="No existen registros" rowIndexVar="item"
+						style="margin-bottom:0">
+
+						<p:column headerText="Id" sortBy="#{vou.idVoucher}">
+							<h:outputText value="#{vou.idVoucher}"/>
+						</p:column>
+						
+						<p:column headerText="Fecha de Emision "
+							sortBy="#{vou.dateVoucher}">
+							<h:outputText value="#{vou.dateVoucher}">
+								<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC"/>
+							</h:outputText>
+						</p:column>
+
+
+					</p:dataTable>
+					<h:outputLabel value="#{infectiousAgentController.mensaje}"/>
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

@@ -4,12 +4,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="TrabajoParcial-G3" transaction-type="JTA">
-		<jta-data-source>java:/RONYWEBDS</jta-data-source>
-	
+		<jta-data-source>java:/PostgresDS</jta-data-source>
+		<class>pe.edu.upc.entity.Product</class>
+		<class>pe.edu.upc.entity.Rent</class>
+		<class>pe.edu.upc.entity.Voucher</class>
+		<class>pe.edu.upc.entity.TypePay</class>
+		<class>pe.edu.upc.entity.Person</class>
+		<class>pe.edu.upc.entity.User</class>
+		<class>pe.edu.upc.entity.Customer</class>
+		<class>pe.edu.upc.entity.Rol</class>
+		<class>pe.edu.upc.entity.UserRol</class>
+		<class>pe.edu.upc.entity.CategoryProduct</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
-				value="update" />
+				value="create" />
 		</properties>
 	</persistence-unit>
 </persistence>
